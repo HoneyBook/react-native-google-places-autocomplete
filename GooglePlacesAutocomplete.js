@@ -11,6 +11,7 @@ import {
   StyleSheet,
   Dimensions,
   TouchableHighlight,
+    TouchableOpacity,
   TouchableWithoutFeedback,
   Platform,
   ActivityIndicator,
@@ -58,8 +59,8 @@ const defaultStyles = {
     // flex: 1,
   },
   row: {
-    padding: 13,
-    height: 44,
+    // padding: 13,
+    // height: 44,
     flexDirection: 'row',
   },
   separator: {
@@ -611,15 +612,7 @@ const GooglePlacesAutocomplete = React.createClass({
   },
 
   _renderRow(rowData = {}, sectionID, rowID) {
-    return (
-      <ScrollView
-        style={{ flex: 1 }}
-        scrollEnabled={this.props.isRowScrollable}
-        keyboardShouldPersistTaps={this.props.keyboardShouldPersistTaps}
-        horizontal={true}
-        showsHorizontalScrollIndicator={false}
-        showsVerticalScrollIndicator={false}>
-        <TouchableHighlight
+    return (<TouchableOpacity
           style={{ minWidth: WINDOW.width }}
           onPress={() => this._onPress(rowData)}
           underlayColor={this.props.listUnderlayColor || "#c8c7cc"}
@@ -628,8 +621,7 @@ const GooglePlacesAutocomplete = React.createClass({
             {this._renderRowData(rowData)}
             {this._renderLoader(rowData)}
           </View>
-        </TouchableHighlight>
-      </ScrollView>
+        </TouchableOpacity>
     );
   },
 
