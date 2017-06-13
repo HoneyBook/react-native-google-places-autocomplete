@@ -683,7 +683,12 @@ const GooglePlacesAutocomplete = React.createClass({
 
   _renderPoweredLogo() {
     if (!this._shouldShowPoweredLogo()) {
-      return null
+      if(this.state.text.length >= this.props.minLength && this._requests.length > 0 ){
+          return this.props.emptyState ? this.props.emptyState() : null;
+      }
+      else{
+        return null;
+      }
     }
 
     return (
